@@ -47,14 +47,18 @@ export default function templateTransform(
 
     // Rollup only cares about the mappings property on the map. Since producing a source map for
     // the template doesn't make sense, the transform returns an empty mappings.
+    const map = { mappings: '' };
+
+    const { code, identifiers } = result;
     return {
-        code: serialize(result.code, filename, options),
-        map: { mappings: '' },
+        code: serialize(code, identifiers, filename, options),
+        map,
     };
 }
 
 function serialize(
     code: string,
+    identifiers: string[],
     filename: string,
     { namespace, name }: NormalizedCompilerOptions
 ): string {
@@ -68,13 +72,19 @@ function serialize(
     buffer += code;
     buffer += '\n\n';
     buffer += 'if (_implicitStylesheets) {\n';
-    buffer += `  tmpl.stylesheets.push.apply(tmpl.stylesheets, _implicitStylesheets)\n`;
+    buffer += `  tmpl.stylesheets.push.apply(tmpl.stylesheets, _implicitStylesheets);\n`;
     buffer += `}\n`;
 
     buffer += `tmpl.stylesheetTokens = {\n`;
     buffer += `  hostAttribute: "${scopingAttribute}-host",\n`;
     buffer += `  shadowAttribute: "${scopingAttribute}"\n`;
     buffer += `};\n`;
+
+    if (identifiers.length > 0) {
+        buffer += `tmpl.ids = [
+            ${identifiers.map(id => `"${id}"`).join(',')}
+        ];\n`;
+    }
 
     return buffer;
 }

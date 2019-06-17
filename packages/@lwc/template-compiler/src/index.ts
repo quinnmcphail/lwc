@@ -55,10 +55,10 @@ export default function compile(source: string, config: Config): TemplateCompile
         diagnostic.message = `Unexpected compilation error: ${diagnostic.message}`;
         warnings.push(diagnostic);
     }
-
     return {
         code,
         warnings,
+        identifiers: state.ids,
     };
 }
 export function compileToFunction(source: string): Function {

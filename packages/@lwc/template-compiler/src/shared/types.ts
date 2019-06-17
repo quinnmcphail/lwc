@@ -17,6 +17,7 @@ export type TemplateExpression =
 export type TemplateCompileResult = {
     code: string;
     warnings: CompilerDiagnostic[];
+    identifiers: string[];
 };
 
 export type TemplateParseResult = {

@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /*
  * Copyright (c) 2018, salesforce.com, inc.
  * All rights reserved.

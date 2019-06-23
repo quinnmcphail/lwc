@@ -3,7 +3,7 @@
     "version": "1.0.1",
     "description": "Synthetic Shadow Root for LWC",
     "license": "MIT",
-    "main": "dist/commonjs/es2017/shadow.js",
+    "main": "dist/modules/es2017/shadow.js",
     "module": "dist/modules/es2017/shadow.js",
     "scripts": {
         "clean": "rm -rf dist/ lib/",
@@ -13,6 +13,9 @@
         "build:playground": "rollup -c playground/rollup.config.js",
         "serve:playground": "node playground/server.js"
     },
+    "files": [
+        "dist/"
+    ],
     "lwc": {
         "modules": {
             "@lwc/synthetic-shadow": "dist/modules/es2017/shadow.js",

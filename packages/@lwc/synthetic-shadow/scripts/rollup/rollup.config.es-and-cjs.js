@@ -51,9 +51,7 @@ function rollupConfig(config) {
 module.exports = [
     // Wrap encloses de module into a function so it can be conditionally enabled at runtime
     // This is very useful for testing.
-    rollupConfig({ format: 'es', target: 'es2017', wrap: true }),
+    //rollupConfig({ format: 'es', target: 'es2017', wrap: true }),
 
     rollupConfig({ format: 'es', target: 'es2017' }),
-    rollupConfig({ format: 'cjs', target: 'es2017' }),
-    rollupConfig({ format: 'cjs', target: 'es5' }),
 ];

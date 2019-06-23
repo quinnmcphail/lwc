@@ -21,8 +21,5 @@
             "@lwc/synthetic-shadow": "dist/modules/es2017/shadow.js",
             "@lwc/synthetic-shadow-runtime": "dist/modules/es2017/shadow.runtime.js"
         }
-    },
-    "publishConfig": {
-        "access": "public"
     }
 }

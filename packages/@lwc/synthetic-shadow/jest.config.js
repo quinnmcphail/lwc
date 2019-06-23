@@ -6,6 +6,10 @@
  */
 const path = require('path');
 const BASE_CONFIG = require('../../../scripts/jest/base.config');
+const LWC_PATH = path.join(
+    path.dirname(require.resolve('@lwc/engine')),
+    'dist/modules/es2017/engine.js'
+);
 
 module.exports = {
     ...BASE_CONFIG,
@@ -16,8 +20,12 @@ module.exports = {
 
     // Customize setup for the engine tests.
     setupFilesAfterEnv: [path.resolve(__dirname, 'scripts/jest/setup-test.js')],
+    transform: {
+        '^.+.js$': 'ts-jest',
+    },
     moduleNameMapper: {
         'test-utils': path.resolve(__dirname, 'scripts/jest/test-utils.js'),
+        '@lwc/engine': LWC_PATH,
     },
 
     // Override global threshold for the package. As we increase the test coverage we should increase
